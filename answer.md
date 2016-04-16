@@ -16,8 +16,8 @@ Segue abaixo a resolução da lista de exercícios 1 disponibilizada no
 Os exercícios abaixo foram realizados após realizar o download dos seguintes
 arquivos de dados necessários:
 
-1. `spam_test.txt`
-2. `spam_train.txt`
+1. [`spam_test.txt`](spam_test.txt)
+2. [`spam_train.txt`](spam_train.txt)
 
 ## Exercício 1 (Train and validation sets):
 
