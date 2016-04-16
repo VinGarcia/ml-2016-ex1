@@ -16,8 +16,8 @@ Segue abaixo a resolução da lista de exercícios 1 disponibilizada no
 Os exercícios abaixo foram realizados após realizar o download dos seguintes
 arquivos de dados necessários:
 
-1. [`spam_test.txt`](spam_test.txt)
-2. [`spam_train.txt`](spam_train.txt)
+1. `spam_test.txt`
+2. `spam_train.txt`
 
 ## Exercício 1 (Train and validation sets):
 
@@ -50,11 +50,12 @@ Transforme todos os e-mails em `feature vectores`:
 
 ### Resposta:
 
-Foi criado um script `ex2.py` para executar estas tarefas. Os arquivos produzidos
-foram salvos no formato `JSON` nos seguintes arquivos:
+Foi criado um script [`ex2.py`](ex2.py) para executar estas tarefas. Os arquivos produzidos
+foram salvos no formato `JSON` com os seguintes nomes:
 
-- `ex2-vocabulary.json`
-- `ex2-fvecs.json`
+- [`ex2-vocabulary.json`](ex2-vocabulary.json)
+- [`ex2-train-vecs.json`](ex2-train-vecs.json)
+- [`ex2-validation-vecs.json`](ex2-validation-vecs.json)
 
 ## Exercício 3 (Perceptron):
 
@@ -88,7 +89,7 @@ Ela deverá retornar a porcentagem de acertos no teste.
 #### Resposta:
 
 Foi implementado uma classe de nome `Perceptron`. Essa classe está contida
-no arquivo `perceptron.py`. A classe contém:
+no arquivo [`perceptron.py`](perceptron.py). A classe contém:
 
 - Um vetor de pesos `w_vec`
 - A função `train(data)` que representa a função `perceptron_train(data)`
@@ -110,7 +111,7 @@ porcentagem de erros cometidos pelo perceptron?
 
 #### Resposta:
 
-Para realizar essa atividade criou-se um script salvo com o nome: `ex3.2.py`
+Para realizar essa atividade criou-se um script salvo com o nome: [`ex3.2.py`](ex3.2.py)
 
 O script executou o perceptron que realizou um total de 664 erros
 antes de convergir, e convergiu após um total de 13 eras.
@@ -178,19 +179,19 @@ da quantidade de dados.
 #### Resposta:
 
 Os experimentos foram realizados e o gráfico gerado
-foi salvo sob o nome `ex3.4-plot.png`.
+foi salvo sob o nome `ex3.4-plot.png` e exibido logo abaixo.
 
-Utilizou-se os amostras propostas e mais várias outras,
+Utilizou-se as amostras propostas e mais várias outras,
 com um total de 21 amostras diferentes para tornar a exibição
 do gráfico mais interessante.
-
-O grafico mostrou uma tendência geral à um maior número de eras
-quanto maior o número de dados, porém essa relação mostrou-se
-bastante instável principalmente com valores baixos.
 
 O gráfico gerado segue abaixo:
 
 ![Gráfico eras/dados](ex3.4-plot.png)
+
+O gráfico mostrou uma correlação positiva entre o número
+de eras e a quantidade de dados, porém essa relação mostrou-se
+bastante instável principalmente com valores baixos.
 
 ### Questão 3.5
 
