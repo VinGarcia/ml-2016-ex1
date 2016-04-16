@@ -16,15 +16,20 @@ Segue abaixo a resolução da lista de exercícios 1 disponibilizada no
 Os exercícios abaixo foram realizados após realizar o download dos seguintes
 arquivos de dados necessários:
 
-1. `spam_test.txt`
-2. `spam_train.txt`
+1. [`spam_test.txt`][test]
+2. [`spam_train.txt`][train]
+
+[test]: spam_test.txt
+[train]: spam_train.txt
+[valid]: spam_validation.txt
 
 ## Exercício 1 (Train and validation sets):
 
-Divida o arquivo `spam_train.txt` que contém 5000 linhas em dois arquivos:
+Divida o arquivo [`spam_train.txt`][train]
+que contém 5000 linhas em dois arquivos:
 
-1. `spam_train.txt` com as primeiras 4000 linhas do arquivo original.
-2. `spam_validation.txt` com 1000 últimas linhas do arquivo original.
+1. [`spam_train.txt`][train] com as primeiras 4000 linhas do arquivo original.
+2. [`spam_validation.txt`][valid] com as 1000 últimas linhas do arquivo original.
 
 E então explique com suas palavras porque seria difícil avaliar a qualidade
 dos classificadores que irei produzir neste exercício sem realizar essa
@@ -137,7 +142,7 @@ Quais são estas palavras? Como interpretar o significado delas?
 
 Foi produzido um script de nome [`ex3.3.py`](ex3.3.py) para extrair
 estas palavras a partir dos pesos salvos no arquivo
-`ex3.2-w_vec.json`.
+[`ex3.2-w_vec.json`](ex3.2-w_vec.json).
 
 - As palavras de maior peso encontradas foram em ordem:
 
@@ -186,7 +191,8 @@ da quantidade de dados.
 #### Resposta:
 
 Os experimentos foram realizados e o gráfico gerado
-foi salvo sob o nome `ex3.4-plot.png` e exibido logo abaixo.
+foi salvo sob o nome [`ex3.4-plot.png`](ex3.4-plot.png)
+e exibido logo abaixo.
 
 Utilizou-se as amostras propostas e mais várias outras,
 com um total de 21 amostras diferentes para tornar a exibição
@@ -212,7 +218,7 @@ proposito.
 #### Resposta:
 
 Um parametro opcional de nome `max_ages` foi adicionado
-a função `Perceptron.train()` do arquivo `perceptron.py`.
+a função `Perceptron.train()` do arquivo [`perceptron.py`](perceptron.py).
 
 Ela foi testada e funciona corretamente.
 
