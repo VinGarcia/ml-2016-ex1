@@ -13,17 +13,40 @@ with open('ex2-validation-vecs.json') as file:
     valid_vecs = json.load(file)
 
 # Build a clean perceptron:
-p = Perceptron(len(vocabulary), delta=0.1)
+p = Perceptron(length=len(vocabulary), delta=0.1)
 
 print("Training...")
  
 mistakes, ages = p.train(train_vecs)
 
-print("  mistakes: %s, ages: %s" % (mistakes, ages))
+if p.test(train_vecs) > 0:
+    print("Some problem ocurred!")
+else:
+    print("  mistakes: %s, ages: %s" % (mistakes, ages))
 
 print("Testing...")
 
 mistakes_fraction = p.test(valid_vecs)
 
 print("  Perceptron missed %s%% of the data" % (mistakes_fraction*100))
+
+# Write generated data:
+with open('ex3.2-w_vec.json', 'w') as file:
+    print("\n  Writing `w_vec` to file...\n")
+    file.write(json.dumps(p.w_vec))
+
             
+
+
+
+
+
+
+
+
+
+
+
+
+
+

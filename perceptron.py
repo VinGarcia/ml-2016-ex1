@@ -1,10 +1,22 @@
 
 class Perceptron():
     
-    def __init__(self, length, delta=0.1):
-        self.len = length
-        self.delta = delta
-        self.w_vec = [0] * length
+    def __init__(self, **kw):
+        self.delta = kw.pop('delta', 0.1)
+
+        if 'data' in kw:
+            self.len = len(kw['data'][0])
+            self.w_vec = [0] * self.len
+            self.train(kw['data'])
+        elif 'w_vec' in kw:
+            self.w_vec = kw['w_vec']
+            self.len = len(self.w_vec)
+        elif 'length' in kw:
+            self.len = kw['length']
+            self.w_vec = [0] * self.len
+        else:
+            raise Exception("Missing necessary arguments!")
+
 
     # Receive a table with two columns:
     #   class, feature_vec
@@ -26,16 +38,20 @@ class Perceptron():
         vector = [ v*w for (v,w) in zip(vector, self.w_vec) ]
         return self.activation(sum(vector))
 
+    # Discard old weight vector, and make a new clean one.
+    def resetWeights(self):
+        self.w_vec = [0] * self.len
+
     # Receive a table with two columns:
     #   class, feature_vec
     #
     # train data until there is no more mistakes being made.
     # Then return the total number of mistakes and the total
     # number of iterations through the data.
-    def train(self, train_data):
+    def train(self, train_data, max_ages=None):
         ages = 0;
         m_total = mistakes = self.train_all_once(train_data)
-        while(mistakes != 0):
+        while(mistakes != 0 and (max_ages==None or ages<max_ages)):
             mistakes = self.train_all_once(train_data)
             m_total += mistakes
             ages += 1
