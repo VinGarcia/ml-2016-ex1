@@ -133,7 +133,7 @@ Quais são estas palavras? Como interpretar o significado delas?
 
 - As palavras de maior peso encontradas foram em ordem:
 
-```json
+```javascript
 [
   "click",    "remov", "pleas",     "pai", "free",
   "sight",       "cb",    "nb", "present",  "raw",
@@ -147,7 +147,7 @@ de uma ou mais delas foi frequente em grande parte dos SPAMs.
 
 - As palavras de menor peso encontradas foram em ordem:
 
-```json
+```javascript
 [
   "there", "still",  "log", "prefer", "reserv",
    "head",   "not", "view", "author",   "user",
@@ -168,7 +168,7 @@ fornecidos à função de treino de seu perceptron.
 O professor sugere coletar amostras com
 as seguintes quantidades de linhas nos dados de entrada:
 
-```json
+```javascript
 [ 100, 200, 400, 800, 2000, 4000 ]
 ```
 
@@ -189,8 +189,6 @@ quanto maior o número de dados, porém essa relação mostrou-se
 bastante instável principalmente com valores baixos.
 
 O gráfico gerado segue abaixo:
-
-: Gráfico Gerado
 
 ![Gráfico eras/dados](ex3.4-plot.png)
 
