@@ -135,9 +135,9 @@ Quais são estas palavras? Como interpretar o significado delas?
 
 ```json
 [
-  click,    remov, pleas,     pai, free,
-  sight,       cb,    nb, present,  raw,
-  guarante, death,   sir,    wait, hour
+  "click",    "remov", "pleas",     "pai", "free",
+  "sight",       "cb",    "nb", "present",  "raw",
+  "guarante", "death",   "sir",    "wait", "hour"
 ]
 ```
 
@@ -149,9 +149,9 @@ de uma ou mais delas foi frequente em grande parte dos SPAMs.
 
 ```json
 [
-  there, still,  log, prefer, reserv,
-   head,   not, view, author,   user,
-  which,   rob,  but,  would,  wrote
+  "there", "still",  "log", "prefer", "reserv",
+   "head",   "not", "view", "author",   "user",
+  "which",   "rob",  "but",  "would",  "wrote"
 ]
 ```
 
