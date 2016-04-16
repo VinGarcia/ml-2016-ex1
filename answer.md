@@ -116,6 +116,9 @@ Para realizar essa atividade criou-se um script salvo com o nome: [`ex3.2.py`](e
 O script executou o perceptron que realizou um total de 664 erros
 antes de convergir, e convergiu após um total de 13 eras.
 
+Após sua execução os vetor de pesos foi salvo no arquivo
+[`ex3.2-w_vec.json`](ex3.2-w_vec.json)
+
 Após o treinamento um teste foi realizado com a função `perceptron_test()`
 com os mesmos dados utilizados no treino e encontrou uma porcentagem de
 erros de 0% como esperado.
@@ -131,6 +134,10 @@ as 15 palavras de maior peso e as 15 palavras de menor peso em seu perceptron.
 Quais são estas palavras? Como interpretar o significado delas?
 
 #### Resposta:
+
+Foi produzido um script de nome [`ex3.3.py`](ex3.3.py) para extrair
+estas palavras a partir dos pesos salvos no arquivo
+`ex3.2-w_vec.json`.
 
 - As palavras de maior peso encontradas foram em ordem:
 
