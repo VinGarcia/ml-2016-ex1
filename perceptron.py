@@ -48,14 +48,16 @@ class Perceptron():
     # train data until there is no more mistakes being made.
     # Then return the total number of mistakes and the total
     # number of iterations through the data.
-    def train(self, train_data, max_ages=None):
-        ages = 0;
+    def train(self, train_data, max_epoch=None):
+        epochs = 1;
+
         m_total = mistakes = self.train_all_once(train_data)
-        while(mistakes != 0 and (max_ages==None or ages<max_ages)):
+
+        while(mistakes != 0 and (max_epoch==None or epochs<max_epoch)):
             mistakes = self.train_all_once(train_data)
             m_total += mistakes
-            ages += 1
-        return m_total, ages
+            epochs += 1
+        return m_total, epochs
 
     # Receive a table with two columns:
     #   class, feature_vec

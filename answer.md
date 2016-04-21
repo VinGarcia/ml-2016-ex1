@@ -79,7 +79,7 @@ perceptron até que se obtenha 100% de acerto no treino.
 Ela deve retornar:
 
 - A contagem de atualizações individuais dos pesos.
-- O número de iterações por toda a tabela (o número de eras)
+- O número de iterações por toda a tabela (o número de épocas)
 - Os pesos finais calculados.
 
 b. `perceptron_test(w_vec, data)`
@@ -106,7 +106,7 @@ Treine o seu perceptron com os dados de **treino** e então
 responda:
 
 - Quantos erros o algoritmo cometeu antes de convergir?
-- Quantas iterações (eras) o algoritmo precisou para convergir?
+- Quantas iterações (épocas) o algoritmo precisou para convergir?
 
 Use a função teste em seu perceptron com os mesmos dados utilizados para
 o **treino**, a função retornou 0% de erro como esperado?
@@ -119,7 +119,7 @@ porcentagem de erros cometidos pelo perceptron?
 Para realizar essa atividade criou-se um script salvo com o nome: [`ex3.2.py`](ex3.2.py)
 
 O script executou o perceptron que realizou um total de 664 erros
-antes de convergir, e convergiu após um total de 13 eras.
+antes de convergir, e convergiu após um total de 13 épocas.
 
 Após sua execução os vetor de pesos foi salvo no arquivo
 [`ex3.2-w_vec.json`](ex3.2-w_vec.json)
@@ -185,7 +185,7 @@ as seguintes quantidades de linhas nos dados de entrada:
 [ 100, 200, 400, 800, 2000, 4000 ]
 ```
 
-Crie um gráfico mostrando o número de eras em função
+Crie um gráfico mostrando o número de épocas em função
 da quantidade de dados.
 
 #### Resposta:
@@ -200,10 +200,10 @@ do gráfico mais interessante.
 
 O gráfico gerado segue abaixo:
 
-![Gráfico eras/dados](ex3.4-plot.png)
+![Gráfico épocas/dados](ex3.4-plot.png)
 
 O gráfico mostrou uma correlação positiva entre o número
-de eras e a quantidade de dados, porém essa relação mostrou-se
+de épocas e a quantidade de dados, porém essa relação mostrou-se
 bastante instável principalmente com valores baixos.
 
 ### Questão 3.5
@@ -217,7 +217,7 @@ proposito.
 
 #### Resposta:
 
-Um parametro opcional de nome `max_ages` foi adicionado
+Um parametro opcional de nome `max_epoch` foi adicionado
 a função `Perceptron.train()` do arquivo [`perceptron.py`](perceptron.py).
 
 Ela foi testada e funciona corretamente.
