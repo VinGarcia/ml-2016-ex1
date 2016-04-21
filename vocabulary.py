@@ -33,7 +33,7 @@ class Vocabulary():
         vec = []
 
         for word in self.words:
-            vec.append( word in text )
+            vec.append( int(word in text) )
         
         return vec
 
