@@ -222,6 +222,136 @@ a função `Perceptron.train()` do arquivo [`perceptron.py`](perceptron.py).
 
 Ela foi testada e funciona corretamente.
 
+## Exercício 4 (SVM)
+
+### Questão 4.1 e 4.2
+
+Implemente a função de treino e teste do SVM seguindo
+o algoritmo Pegasus.
+
+O critério de parada do algoritmo deve ser um total
+de 20 iterações (épocas). A função train deve também
+calcular a função objetivo após cada iteração e salva-la
+de forma que seus valores possam ser plotados posteriormente.
+
+Após a implementação execute o treino com os dados de treino
+e realize um plot com os resultados da função objetivo
+para as 20 iterações. Nestes testes utilize 2**5 como lambda.
+
+#### Resposta:
+
+O algoritmo do SVM foi implementado segundo o pseud-código
+do algoritmo Pegasus.
+
+Para evitar duplicação de código a classe SVM ([`svm.py`](svm.py))
+extende a classe utilizada na implementação do Perceptron ([`perceptron.py`](perceptron.py))
+de forma que só foi necessário re-implementar a função de treino
+e a função construtora.
+
+O script responsável pelo instaciação da classe está contido no arquivo
+[`ex4.1.py`](ex4.1.py) e o output do script foi salvo nos arquivos:
+
+- [`4.1-w_vec.json`](4.1-w_vec.json)
+- [`4.1-obj_vec.json`](4.1-obj_vec.json)
+
+O plot foi realizado por um outro script de nome [`ex4.1.plot.py`](ex4.1.plot.py)
+e salvo no arquivo [`ex4.1-plot.png`](ex4.1-plot.png) exibido abaixo.
+
+![`ex4.1-plot.png`](ex4.1-plot.png)
+
+Como esperado a função parece tender a decrescer e convergir para um valor
+próximo de 0.
+
+### Questão 4.3
+
+Execute seu SVM para os valores de lambda
+2**P variando P entre os valores:
+
+- `[-9,-8,-7,-6,-5,-4,-3,-2,-1,0,1,2,3,4,5,6,7,8,9]`
+
+Teste todos os resultados com os dados de teste e
+validação, e encontre o P para o qual houve o menor
+erro no teste de validação.
+
+- Qual foi o valor de P deste classificador?
+
+Para esse classificador então responda:
+
+1. Qual foi o erro de treino?
+2. Quantos das amostras de treino pertencem aos seus
+   vetores de suporte?
+3. Como você os encontrou?
+
+Agora compare os resultados de seu teste com os resultados
+de erro do perceptron. O que explica as diferenças?
+
+#### Resposta:
+
+O SVM foi executado para os valores requisitados de lambda
+e os resultados obtidos foram salvos nos arquivos:
+
+- [`ex4.2-w_vec-list.json`](ex4.2-w_vec-list.json)
+- [`ex4.2-avg-train-err.json`](ex4.2-avg-train-err.json)
+- [`ex4.2-avg-validation-err.json`](ex4.2-avg-validation-err.json)
+
+Pode-se observar que o menor erro de validação ocorreu para
+`P = (-5)`, ou seja `lambda=2**(-5)`, como pode ser
+observado no gráfico abaixo:
+
+![`ex4.2-avg-validation-err.png`](ex4.2-avg-validation-err.png)
+
+Para esse valor de P o erro de treino foi `0.0132`. O que é 
+interessante sobre esse resultado é que ele não foi o melhor
+resultado dos testes de treino. 
+
+Como pode ser observado no gráfico os testes de treino variaram
+de forma que quanto menor P menos erros ele tendia a cometer
+no treino, a mesma regra não foi seguida nos erros de validação que
+apesar de também diminuirem entre os valores de `P=9` até `P=-5`,
+eles voltam a aumentar após P assumir o valor -6.
+
+Isso sugere que após esse ponto as melhoras no treino eram apenas
+um caso de _overfitting_ e não representavam melhora real na solução.
+
+**Support Vectors**:
+
+Os pontos dos dados de treino que pertencem à vetores suporte foram
+calculados pelo script [`ex4.2.support.py`](ex4.2.support.py).
+
+O calculo foi realizado utilizando a equação:
+
+```python
+if Y*w_xi <= 1 + error:
+  sup_vec_list.append(line_idx)
+```
+
+De forma que qualquer dado entre as duas margens foi considerado como
+um vetor suporte. É no entanto esperado que após a convergência não
+devam haver pontos entre as duas margens exceto devido a erros de cálculo
+de ponto flutuante. Porém não foi isso que encontrei com cálculo acima.
+
+Por algum motivo todos os pontos se encontravam no intervalo descrito acima
+o que indica que deve haver algum erro no algoritmo.
+
+Devido ao prazo não será possível corrigir este problema.
+
+**Comparing with the Perceptron**:
+
+Os resultados do SVM foram no melhor valor de lambda foram de 2% de erros
+apenas, o que foi mais preciso do que os 2.7% de erros encontrados na
+validação do Perceptron.
+
+Isso é um bom indicativo pois sugere que apesar do erro descrito na obtenção
+dos vetores suporte o SVM se comportou melhor que o perceptron, o que era o
+resultado esperado.
+
+
+
+
+
+
+
+
 
 
 

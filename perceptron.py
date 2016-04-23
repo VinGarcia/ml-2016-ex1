@@ -5,7 +5,7 @@ class Perceptron():
         self.delta = kw.pop('delta', 0.1)
 
         if 'data' in kw:
-            self.len = len(kw['data'][0])
+            self.len = len(kw['data'][0][1])
             self.w_vec = [0] * self.len
             self.train(kw['data'])
         elif 'w_vec' in kw:
@@ -16,7 +16,6 @@ class Perceptron():
             self.w_vec = [0] * self.len
         else:
             raise Exception("Missing necessary arguments!")
-
 
     # Receive a table with two columns:
     #   class, feature_vec
@@ -33,7 +32,8 @@ class Perceptron():
     # Return a prediction for the vector class in range [0,1]
     def classify(self, vector):
         if len(vector) != self.len:
-            raise Exception("The length of the vector should match %s!" % self.len)
+            raise Exception(
+                "The length of the vector should match %s!" % self.len)
 
         vector = [ v*w for (v,w) in zip(vector, self.w_vec) ]
         return self.activation(sum(vector))
@@ -48,13 +48,17 @@ class Perceptron():
     # train data until there is no more mistakes being made.
     # Then return the total number of mistakes and the total
     # number of iterations through the data.
-    def train(self, train_data, max_epoch=None):
+    def train(self, train_data, max_iter=None, verbose=False):
         epochs = 1;
 
-        m_total = mistakes = self.train_all_once(train_data)
+        if verbose:
+            print("On epoch 0")
+        m_total = mistakes = self.train_epoch(train_data)
 
-        while(mistakes != 0 and (max_epoch==None or epochs<max_epoch)):
-            mistakes = self.train_all_once(train_data)
+        while(mistakes != 0 and (max_iter==None or epochs<max_iter)):
+            if verbose:
+                print("On epoch %s" % epochs)
+            mistakes = self.train_epoch(train_data)
             m_total += mistakes
             epochs += 1
         return m_total, epochs
@@ -65,34 +69,25 @@ class Perceptron():
     # and return True only if all tests
     # matched their respective classes.
     # Return false otherwise.
-    def train_all_once(self, train_data):
+    def train_epoch(self, train_data):
         mistakes = 0
 
-        for Class, Vec in train_data:
-            if not self.train_one(Vec, Class):
+        for idx, (exp, vec) in enumerate(train_data):
+            # Check the difference between the
+            # expected and the actual value:
+            diff = exp - self.classify(vec)
+    
+            # If it matched correctly:
+            if diff != 0:
+                # Update the weights:
+                delta = diff * self.delta
+                self.w_vec = [
+                    (w+delta if v>0 else w)
+                    for (v,w) in zip(vector, self.w_vec)
+                  ]
                 mistakes += 1
 
         return mistakes
-
-    # Evaluate the vector class with classify(),
-    # Update the weights if necessary and
-    # return True only if the prediction was correct.
-    def train_one(self, vector, expected):
-        if expected not in [0,1]:
-            raise Exception("The `expected` argument should be in range(0,1)!")
-
-        # Check the difference between the
-        # expected and the actual value:
-        diff = expected - self.classify(vector)
-
-        # If it matched correctly:
-        if diff == 0:
-            return True
-        else:
-            # Update the weights:
-            delta = diff * self.delta
-            self.w_vec = [ (w+delta if v>0 else w) for (v,w) in zip(vector, self.w_vec) ]
-            return False
 
     def activation(self, num):
         if num >= 0:
